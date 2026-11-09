@@ -76,11 +76,11 @@ def show_overview(df):
     #kpis
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Total Records", len(df))
+        st.metric("Total Records", f"{len(df):,.0f}")
 
     with col2:
         educated = (df["education"] == "Graduate").sum()
-        st.metric("Educated Candidates", educated)
+        st.metric("Educated Candidates", f"{educated:,.0f}")
 
     with col3:
         avg_loan_term = df["loan_term"].mean()
@@ -130,15 +130,15 @@ def show_dashboard(df):
     # METRICS
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Total Records", len(filtered_df))
+        st.metric("Total Records", f"{len(filtered_df):,.0f}")
 
     with col2:
         total_graduate = (filtered_df["education"] == "Graduate").sum() if len(filtered_df) > 0 else 0
-        st.metric("Educated Candidates", total_graduate)
+        st.metric("Educated Candidates", f"{total_graduate:,.0f}")
 
     with col3:
         total_self_emplyed = (filtered_df["self_employed"] == "Yes").sum() if len(filtered_df) > 0 else 0
-        st.metric("Self-Employed Candidates", total_self_emplyed)
+        st.metric("Self-Employed Candidates", f"{total_self_emplyed:,.0f}")
 
     with col4:
         avg_credit_score = filtered_df["credit_score"].mean() if len(filtered_df) > 0 else 0
